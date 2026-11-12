@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffdce9">
+<title>To My Jaanu 💌</title>
+<style>
+:root{--pink:#ffdce9;--pink2:#fff0f5;--hot:#ed78a7;--rose:#b94e7b;--ink:#74445f;--lilac:#eee5ff;--cream:#fffaf7}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:"Trebuchet MS",ui-rounded,system-ui,sans-serif;color:var(--ink)}
+body{overflow:hidden;background:linear-gradient(145deg,#ffe8f0,#f8eaff 55%,#fff2e5)}
+button{font:inherit;cursor:pointer}
+#sky{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.float{position:absolute;bottom:-50px;opacity:.65;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+.app{position:relative;z-index:1;min-height:100svh;display:grid;place-items:center;padding:18px}
+.card{width:min(760px,100%);min-height:min(690px,calc(100svh - 36px));max-height:calc(100svh - 36px);overflow:auto;border:1px solid #ffffffc9;border-radius:30px;background:#fffaf4eF;box-shadow:0 25px 90px #a65d8540;position:relative;scrollbar-width:thin}
+.progress{height:5px;background:#f8dce8;position:sticky;top:0;z-index:5}.bar{height:100%;width:0;background:linear-gradient(90deg,#f18bb1,#a58ce8);transition:width .6s}
+.scene{display:none;min-height:620px;padding:clamp(25px,6vw,58px);text-align:center;flex-direction:column;align-items:center;justify-content:center;position:relative;animation:appear .7s ease both}
+.scene.active{display:flex}
+@keyframes appear{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#c06a91;font-weight:900}
+h1{font-size:clamp(2.5rem,8vw,5rem);line-height:1.02;letter-spacing:-.06em;margin:18px 0;color:#a94f7a}
+h2{font-size:clamp(2rem,6vw,3.2rem);line-height:1.08;letter-spacing:-.045em;margin:12px 0 18px;color:#a94f7a}
+p{font-size:1.04rem;line-height:1.8;max-width:550px;margin:8px auto;color:#805b70}
+.small{font-size:.85rem;color:#a47d91}
+.btn{border:0;border-radius:99px;padding:14px 23px;margin:12px 5px 0;background:linear-gradient(100deg,#ef83aa,#ad91e9);color:white;font-weight:900;box-shadow:0 9px 22px #d17ca944;transition:.2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 13px 26px #d17ca966}.btn.light{background:#fff;color:#a94f7a;border:1px solid #f3cbdc;box-shadow:none}
+.hero-art{height:190px;width:220px;position:relative;display:grid;place-items:center;margin:4px auto 10px}
+.bigheart{font-size:125px;color:#f28bb0;filter:drop-shadow(0 13px 9px #d97da455);animation:pulse 2s infinite}
+@keyframes pulse{50%{transform:scale(1.12) rotate(-5deg)}}
+.spark{position:absolute;font-size:2rem;animation:twinkle 1.8s infinite alternate}.sp1{top:4px;left:5px}.sp2{right:0;top:30px;animation-delay:.6s}.sp3{bottom:10px;left:15px;animation-delay:1s}
+.doodle-row{display:flex;justify-content:center;align-items:center;gap:20px;margin:20px 0 8px;flex-wrap:wrap}
+.doodle{font-size:clamp(3rem,9vw,5rem);display:inline-block;animation:bob 2.5s ease-in-out infinite}.doodle:nth-child(2){animation-delay:.4s}.doodle:nth-child(3){animation-delay:.8s}
+@keyframes bob{50%{transform:translateY(-13px) rotate(6deg)}}
+.paper{background:#fff;border:1px solid #f4d9e5;border-radius:18px;padding:24px;max-width:540px;text-align:left;box-shadow:0 12px 30px #a65d8512;transform:rotate(-1deg)}
+.paper p{font-family:Georgia,serif;font-size:1.06rem;color:#755267}
+.stamp{display:inline-block;padding:8px 14px;border:1px dashed #df8cac;border-radius:12px;color:#bd638b;transform:rotate(4deg);font-weight:900;margin:15px}
+.choice{border:1px solid #f1cddd;border-radius:16px;background:#fff;padding:13px 16px;margin:7px;min-width:170px;color:#8d5672;font-weight:800}
+.choice.selected{background:#ffe4ee;border-color:#e887ae;box-shadow:0 0 0 3px #fbe1ec}
+.revealbox{min-height:80px;max-width:520px;padding:18px;border-radius:18px;background:#fff0f6;border:1px dashed #e9a6c1;margin:15px auto;color:#94516f;line-height:1.7}
+.envelope{font-size:115px;cursor:pointer;filter:drop-shadow(0 10px 8px #d17ca944);animation:wiggle 2.5s infinite;user-select:none}
+@keyframes wiggle{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-8deg)}96%{transform:rotate(8deg)}}
+.confetti{position:fixed;pointer-events:none;font-size:20px;z-index:10;animation:pop 1.5s ease-out forwards}
+@keyframes pop{from{transform:translate(0,0) scale(.5);opacity:1}to{transform:translate(var(--x),var(--y)) rotate(220deg) scale(1.3);opacity:0}}
+.footer{position:sticky;bottom:0;background:#fffaf4eF;padding:10px 18px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.footer span{font-size:.75rem;color:#b17b94}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#75445f;color:white;padding:11px 17px;border-radius:99px;opacity:0;transition:.3s;z-index:30;pointer-events:none}
+#toast.show{opacity:1}
+@media(max-width:520px){.card{border-radius:22px;min-height:calc(100svh - 24px);max-height:calc(100svh - 24px)}.app{padding:12px}.scene{min-height:570px;padding:28px 20px}.footer{padding-bottom:12px}.paper{padding:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<div class="app"><main class="card" aria-live="polite">
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<section class="scene active" data-time="20">
+  <div class="kicker">✦ a tiny internet surprise ✦</div>
+  <div class="hero-art"><span class="spark sp1">✧</span><span class="spark sp2">✦</span><span class="spark sp3">♡</span><div class="bigheart">♥</div></div>
+  <h1>Hey, Jaanu!<br><span style="color:#d58ab4">♡</span></h1>
+  <p>Someone made you a little corner of the internet. Nothing complicated — just a few smiles, some cute things, and words picked especially for you.</p>
+  <div class="stamp">OPEN WHEN YOU'RE READY</div>
+  <button class="btn" onclick="next()">Tap to begin ✨</button>
+  <div class="small" style="margin-top:16px">Best enjoyed at your own pace · sound-free, heart-full</div>
+</section>
+
+<section class="scene" data-time="30">
+  <div class="kicker">chapter 01 · a little hello</div>
+  <div class="doodle-row"><span class="doodle">🌷</span><span class="doodle">🐻</span><span class="doodle">🦋</span></div>
+  <h2>A small reminder…</h2>
+  <p>Some people bring a lovely kind of energy into an ordinary day. A random laugh, a thoughtful conversation, or simply being themselves can make a moment feel brighter.</p>
+  <p>So here's a little page dedicated to celebrating the good things that make you, <b>you</b>.</p>
+  <button class="btn" onclick="next()">Aww, continue →</button>
+</section>
+
+<section class="scene" data-time="35">
+  <div class="kicker">chapter 02 · tiny things matter</div>
+  <h2>Pick a little surprise</h2>
+  <p>Choose one of the buttons. Each one has a tiny message waiting for you.</p>
+  <div>
+    <button class="choice" onclick="reveal(0,this)">🌼 A flower</button>
+    <button class="choice" onclick="reveal(1,this)">⭐ A star</button>
+    <button class="choice" onclick="reveal(2,this)">🧸 A bear hug</button>
+  </div>
+  <div class="revealbox" id="revealbox">Your surprise will appear here… ♡</div>
+  <button class="btn" onclick="next()">Next little moment →</button>
+</section>
+
+<section class="scene" data-time="35">
+  <div class="kicker">chapter 03 · a happy little pause</div>
+  <div class="doodle-row"><span class="doodle">☁️</span><span class="doodle">💗</span><span class="doodle">☁️</span></div>
+  <h2>Here's what I hope for you</h2>
+  <p>More days that make you smile for no big reason. More people who listen properly. More courage to try new things. And always enough room to be completely yourself.</p>
+  <p class="small">You deserve kindness — from others, and from yourself too.</p>
+  <button class="btn" onclick="next()">There's a letter… 💌</button>
+</section>
+
+<section class="scene" data-time="40">
+  <div class="kicker">chapter 04 · a memory close to my heart</div>
+  <div class="doodle-row"><span class="doodle">🫂</span><span class="doodle">💗</span><span class="doodle">✨</span></div>
+  <h2>That first hug</h2>
+  <p>I still remember our first hug. It was so unexpected that, for a moment, I almost couldn't believe it was happening. But somehow, that one simple moment felt so warm and meaningful.</p>
+  <p>It wasn't just a hug — it became one of those little memories that stays with you. It made me feel closer to you, and it gave our bond a special kind of warmth. ♡</p>
+  <button class="btn" onclick="next()">And then… another memory →</button>
+</section>
+
+<section class="scene" data-time="40">
+  <div class="kicker">chapter 05 · a moment I won't forget</div>
+  <div class="doodle-row"><span class="doodle">🌷</span><span class="doodle">💞</span><span class="doodle">🦋</span></div>
+  <h2>Our first kiss</h2>
+  <p>And then there was our first kiss — another moment I honestly didn't expect. It surprised me, made the moment feel unforgettable, and brought us even closer in a way that's hard to put into words.</p>
+  <p>What made it special wasn't that it was perfect or planned. It was that it was ours — a sweet, unexpected memory that became another little part of our story. ♡</p>
+  <button class="btn" onclick="next()">Keep going, there's more →</button>
+</section>
+
+<section class="scene" data-time="45">
+  <div class="kicker">chapter 06 · sealed with a smile</div>
+  <h2>A letter, just for you</h2>
+  <p>Tap the envelope to open your note.</p>
+  <div class="envelope" onclick="openLetter()" role="button" tabindex="0" aria-label="Open the letter">💌</div>
+  <div class="revealbox" id="letter" style="display:none;text-align:left">
+    <b>Dear Jaanu,</b><br><br>
+    I made this little corner of the internet just for you — for the smiles, the unexpected moments, and all the memories that have slowly become part of our story. I keep thinking about our first hug and our first kiss: two surprises I never saw coming, but memories that made me feel even more connected to you.<br><br>
+    I don't need everything to be perfect. I just love the little things we share, the laughs, the silly moments, and the way an ordinary day can become special because of you. Thank you for being part of my life and for making these memories with me.<br><br>
+    <b>Here's to many more happy moments together. ♡</b>
+  </div>
+  <button class="btn" onclick="next()">One last surprise →</button>
+</section>
+
+<section class="scene" data-time="30">
+  <div class="kicker">chapter 07 · a tiny celebration</div>
+  <div class="doodle-row"><span class="doodle">🎀</span><span class="doodle">🐰</span><span class="doodle">🌸</span></div>
+  <h2>Send some happy energy!</h2>
+  <p>Tap the button and let this little page celebrate you.</p>
+  <button class="btn" onclick="celebrate()">Make it sparkle ✨</button>
+  <div class="revealbox" id="celebrateText">A sprinkle of happiness is on its way…</div>
+  <button class="btn" onclick="next()">Final page ♡</button>
+</section>
+
+<section class="scene" data-time="25">
+  <div class="kicker">the end · our little story continues</div>
+  <div class="hero-art"><span class="spark sp1">✦</span><span class="spark sp2">♡</span><span class="spark sp3">✧</span><div class="bigheart">♥</div></div>
+  <h2>For you, Jaanu.</h2>
+  <p>From our unexpected first hug to our first kiss, every little memory has its own place in my heart. I'm grateful for the moments we've shared, and excited for all the lovely memories still waiting for us.</p>
+  <div class="stamp">YOU MEAN SO MUCH TO ME ♡</div>
+  <h2 style="font-size:clamp(1.7rem,5vw,2.5rem);margin-top:18px">I love you very much, Jaanuuuuuu ❤️</h2>
+  <p class="small">Always keep this little reminder close. ♡</p>
+  <button class="btn" onclick="restart()">Replay our little story ↻</button>
+</section>
+
+<div class="footer"><span id="count">01 / 08</span><span>To My Jaanu · made with love</span><button class="btn light" style="margin:0;padding:9px 15px;font-size:.8rem" id="back" onclick="prev()" disabled>← Back</button></div>
+</main></div>
+<div id="toast">A little happiness for you ♡</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];let index=0;
+const bar=document.getElementById('bar'),count=document.getElementById('count'),back=document.getElementById('back');
+function show(i){scenes[index].classList.remove('active');index=Math.max(0,Math.min(scenes.length-1,i));scenes[index].classList.add('active');bar.style.width=((index+1)/scenes.length*100)+'%';count.textContent=String(index+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');back.disabled=index===0;document.querySelector('.card').scrollTo({top:0,behavior:'smooth'});if(index===scenes.length-1)burst(24)}
+function next(){if(index<scenes.length-1)show(index+1)}
+function prev(){if(index>0)show(index-1)}
+function restart(){show(0)}
+const surprises=[
+"🌼 A flower for your day: may little joys find you in the most unexpected places.",
+"⭐ A star for your pocket: keep aiming high, even on the days when the sky feels cloudy.",
+"🧸 A bear-sized reminder: take a breath, be gentle with yourself, and remember you're doing okay."
+];
+function reveal(n,el){document.querySelectorAll('.choice').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');document.getElementById('revealbox').textContent=surprises[n];burst(9)}
+function openLetter(){const l=document.getElementById('letter');l.style.display='block';burst(18)}
+function celebrate(){burst(45);document.getElementById('celebrateText').textContent='✨ Confetti, hearts and a whole lot of good wishes — delivered! Hope you smiled. ♡';toast('You make the world a little brighter!')}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+function burst(n){const icons=['💗','♡','✦','🌸','✨','🦋'];for(let i=0;i<n;i++){const e=document.createElement('span');e.className='confetti';e.textContent=icons[Math.floor(Math.random()*icons.length)];e.style.left=(35+Math.random()*30)+'vw';e.style.top=(35+Math.random()*30)+'vh';e.style.setProperty('--x',(Math.random()-.5)*420+'px');e.style.setProperty('--y',(-80-Math.random()*350)+'px');document.body.appendChild(e);setTimeout(()=>e.remove(),1600)}}
+const sky=document.getElementById('sky');const floaties=['♡','♥','✦','✧','🌸'];for(let i=0;i<24;i++){const e=document.createElement('span');e.className='float';e.textContent=floaties[i%floaties.length];e.style.left=Math.random()*100+'%';e.style.fontSize=(12+Math.random()*20)+'px';e.style.animationDuration=(9+Math.random()*13)+'s';e.style.animationDelay=(-Math.random()*18)+'s';sky.appendChild(e)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key==='Enter'&&document.activeElement.classList.contains('envelope'))openLetter()});
+show(0);
+</script>
+</body>
+</html>
