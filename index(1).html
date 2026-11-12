@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>To My Jaanu 💌</title>
+<style>
+:root{--pink:#ff8fb1;--deep:#a83d70;--cream:#fff7fa;--lav:#eee7ff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Georgia,serif;color:#67344f;background:radial-gradient(circle at 15% 15%,#fff 0 5%,transparent 30%),linear-gradient(135deg,#ffe2ec,#f2e8ff 55%,#fff0dc);display:grid;place-items:center;overflow-x:hidden}
+main{width:min(92vw,760px);min-height:78vh;padding:28px 22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.card{width:100%;padding:clamp(24px,5vw,48px);border:1px solid #ffffffc9;border-radius:30px;background:#ffffffb8;box-shadow:0 18px 60px #a64d7620;backdrop-filter:blur(8px);animation:appear .7s ease}
+h1{font-size:clamp(2.1rem,7vw,4rem);color:var(--deep);margin:.2em 0}h2{font-size:clamp(1.6rem,5vw,2.5rem);color:var(--deep);margin:.1em 0 .6em}
+p{font-size:clamp(1.08rem,3vw,1.35rem);line-height:1.7;margin:0 auto;max-width:590px}
+.emoji{font-size:3.2rem;margin-bottom:14px;animation:bob 2.2s ease-in-out infinite}
+.controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+button{border:0;border-radius:999px;padding:13px 23px;background:var(--deep);color:white;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px #a83d7030}
+button.secondary{background:#fff;color:var(--deep);border:1px solid #f1bfd1}
+button:focus-visible{outline:3px solid #6b4bd1;outline-offset:3px}
+#progress{height:5px;width:min(90vw,600px);background:#ffffff9c;border-radius:10px;overflow:hidden;margin:0 auto 18px}
+#bar{height:100%;width:0;background:linear-gradient(90deg,#ff7fa8,#a98aff);transition:width .4s}
+.small{font: .9rem Arial,sans-serif;color:#95647d;margin-top:18px}
+.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.hearts span{position:absolute;bottom:-40px;opacity:.5;animation:float 12s linear infinite;font-size:20px}
+@keyframes float{to{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(4deg)}}
+@keyframes appear{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="hearts" aria-hidden="true"></div>
+<main>
+<div id="progress"><div id="bar"></div></div>
+<section class="card" aria-live="polite">
+<div class="emoji" id="emoji">💌</div>
+<h1 id="title">To My Jaanu</h1>
+<p id="message">A little collection of our sweetest memories.</p>
+<div class="controls">
+<button class="secondary" id="back" type="button">Back</button>
+<button id="next" type="button">Let's begin 💗</button>
+</div>
+<div class="small" id="count">A little story, just for you</div>
+</section>
+</main>
+<script>
+const slides=[
+["💗","Hey, Jaanu!","I made this little corner of the internet just for you. No big speech, no proposal—just a reminder of how much you mean to me."],
+["🌷","A little reminder","Out of all the ordinary days, some moments become our favourites without even trying. I'm grateful for the memories we're making together."],
+["🫂","Our first hug","I still remember our first hug. It was so unexpected and surprising, but somehow it felt so natural. That little moment brought us closer and became one of those memories I keep tucked safely in my heart."],
+["💋","Our first kiss","And then, our first kiss—another moment I hadn't quite expected. It made everything feel even more special, like we had shared a tiny secret moment that belonged only to us."],
+["✨","The little things","It's not only the big moments. It's the laughs, the silly conversations, the unexpected smiles, and all the small things that make being with you feel special."],
+["💌","A note for you","Thank you for being part of my days and for making so many memories worth smiling about. I hope we keep growing together, understanding each other, and collecting beautiful little moments."],
+["🌙","More memories ahead","We still have so many stories left to make—more laughter, more adventures, and more moments that we'll look back on with the biggest smiles."],
+["❤️","I love you very much","I love you very much, Jaanuuuuuu ❤️"]
+];
+let index=0;
+const emoji=document.getElementById('emoji'),title=document.getElementById('title'),message=document.getElementById('message'),next=document.getElementById('next'),back=document.getElementById('back'),bar=document.getElementById('bar'),count=document.getElementById('count');
+function render(){const s=slides[index];emoji.textContent=s[0];title.textContent=s[1];message.textContent=s[2];bar.style.width=((index+1)/slides.length*100)+'%';count.textContent=`${index+1} of ${slides.length}`;back.style.visibility=index===0?'hidden':'visible';next.textContent=index===slides.length-1?'Read again ↻':'Next ✨';}
+next.addEventListener('click',()=>{if(index===slides.length-1)index=0;else index++;render()});
+back.addEventListener('click',()=>{index=Math.max(0,index-1);render()});
+const layer=document.querySelector('.hearts');const symbols=['♡','✦','♥','✿'];for(let i=0;i<18;i++){const s=document.createElement('span');s.textContent=symbols[i%symbols.length];s.style.left=(Math.random()*100)+'%';s.style.animationDelay=(Math.random()*12)+'s';s.style.animationDuration=(9+Math.random()*9)+'s';layer.appendChild(s)}
+render();
+</script>
+</body>
+</html>
